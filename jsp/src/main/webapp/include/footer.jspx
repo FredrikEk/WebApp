@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<footer>
-    <h3>This is the footer "${param.fromIncludePage}"</h3>
-</footer>
-
-
