@@ -1,0 +1,66 @@
+ 
+        String title = null;
+        String content = null;
+
+        // This is navigation only
+        if (view != null) {
+            
+            switch(view){
+                case "add":
+                    title = "add";
+                    content = "products/addProduct";
+                    break;
+                case "search":
+                    
+                    break;
+                default:;
+                
+            }
+        }
+        // State change! Then Navigation
+        if (action != null) {
+            switch(action) {
+                case "delete":
+
+                    title = "Products";
+                    content = "products/products";
+
+                    long delId = Integer.parseInt(request.getParameter("prodId"));
+                    shop.getProductCatalogue().delete(delId);
+                    break;
+                case "edit":
+                    title = "edit";
+                    content = "products/editProduct";
+                    break;
+                default:;
+            }
+            
+        }
+        LOG.log(Level.INFO, content);
+        request.setAttribute("title", title);
+        request.setAttribute("content", content);
+        getServletContext().getRequestDispatcher("WEB-INF/jsp/template.jspx").forward(request, response);
+
+
+
+
+
+
+
+<table class="table table-striped">
+            <th>id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+                <c:forEach var="row" items="${PRODUCT_LIST}">
+                    <tr>
+                        <!-- Note use of row here -->
+                        <td> ${row.id} </td>
+                            <td> ${row.name} </td>
+                            <td> ${row.price} </td>
+                            <td> <a class="navbar-brand" href="products?action=edit">Edit</a> </td>
+                            <td> <a class="navbar-brand" href="products?action=delete&amp;prodId=${row.id}">Delete</a> </td>
+                    </tr>
+                </c:forEach>
+        </table>

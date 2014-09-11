@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"  version="2.0">
+     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/> 
+ 
+    <jsp:output doctype-root-element="html"
+                doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+                doctype-system="http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
+
+
+    <html>
+        <head>
+            <title>selection.jspx</title>
+        </head>
+        <body>
+            <h1>Using JSTL selection </h1>
+            <p> Try reload this </p>
+            <!-- Bean created in InitListener -->
+            <!-- Set a random value using calling a backing bean -->
+            <c:set var= "i" value="${random.randomInt}" />
+            <!-- Out put result to check -->
+            <c:out value="i is:  ${i}" />
+
+            <!-- Use vale to choose background color
+                 NOTE: Setting colors like this is BAD you should use CSS -->
+            <c:choose>
+                <c:when test="${i lt 5 }">
+
+                    <div style="background: blue ; height: 10%; width: 33%">
+                        <p>qqqq</p>
+                    </div>
+                    <div style="background: red; height: 10%; width: 33%">
+                        <p>qqqq</p>
+                    </div>
+                    <div style="background: gray; height: 10%; width: 33%">
+                        <p>qqqq</p>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div style="background: red; height: 10%; width: 33%">
+                        <p>qqqq</p>
+                    </div>
+                    <div style="background: green; height: 10%; width: 33%">
+                        <p>qqqq</p>
+                    </div>
+                    <div style="background: blue ; height: 10%; width: 33%">
+                        <p>qqqqq</p>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </body>
+    </html>
+</jsp:root>

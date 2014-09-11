@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>    
+    <jsp:output doctype-root-element="html"
+                doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+                doctype-system="http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>   
+    <html>
+        <head>
+            <link rel="stylesheet" href="css/default.css" type="text/css"/>
+            <title>useCSS.jspx</title>
+        </head>
+        <body>
+            <h1>useCSS.jspx</h1>
+            <p> Adding a CSS to a JSP page </p>
+        </body>
+    </html>   
+</jsp:root>

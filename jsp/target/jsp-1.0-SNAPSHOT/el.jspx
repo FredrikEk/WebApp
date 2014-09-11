@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/> 
+   
+    <jsp:output doctype-root-element="html"
+                doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+                doctype-system="http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
+
+    <html>
+        <head>
+            <title>el.jspx</title>
+        </head>
+
+        <body>
+            <h1>This is el.jspx</h1>
+            <h5> Try reload this </h5>
+
+            <p>Below is data initialized in DispatcherServlet</p>
+            <ul>
+                <!-- Scopes ace automagically searched for key, returning the object-->
+                <li>The request scope object: ${rand}</li>
+                <li>Ask object for a value: ${rand.randomInt}</li>
+                <!-- Same  as call getData() --> 
+                <li>Data from DataBean: ${data.data} </li>
+            </ul> 
+            <p>Below is data initialized in the InitListener</p>
+            <ul>         
+                <li>The session scope object: ${random}</li>
+                <li>Get value from session object: ${sessionScope['random'].randomInt}</li>
+                <li>The application scope object (Data object, toString called): ${date}</li>
+            </ul>
+        </body>
+
+    </html>
+
+</jsp:root>

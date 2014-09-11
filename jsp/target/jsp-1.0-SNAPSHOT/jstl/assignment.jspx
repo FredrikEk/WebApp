@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/> 
+
+    <jsp:output doctype-root-element="html"
+                doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+                doctype-system="http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
+
+    <html>
+        <head>
+            <title>assignment.jspx</title>
+        </head>
+        <body>
+            <h1>Using JSTL assignment</h1>
+
+            <!-- 
+                  Using JSTL to set a variable
+          
+            -->
+            <!-- myBean is a ref to a DataBean object -->
+            <c:set var="myBean" value="${data}" />
+
+            <!-- Use variable, must know there's a 'data' attrib  -->
+            <c:out value="Data for bean is: ${myBean.data}" />
+        </body>
+    </html>
+</jsp:root>
