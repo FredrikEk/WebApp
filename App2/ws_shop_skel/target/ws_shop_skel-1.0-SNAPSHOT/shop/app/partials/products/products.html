@@ -1,0 +1,46 @@
+<!--Body content-->
+<div ng-controller="ProductListCtrl">
+    <h2>Products</h2>
+    
+    <div>
+        Search: <input ng-model="query" ng_keydown="doKey($event)" >
+    </div>
+    <hr/>
+    <a href="#/product" >New Product</a>
+    <hr/>
+    <div>
+        <!--Body content-->
+        <h2>Product List</h2>
+        Rows:
+        <select ng-model="pageSize">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td><td>Name</td><td>Price</td>
+                </tr>
+            </thead>
+            <tr ng-repeat="product in products | filter:query" ng-class-odd="'odd'" 
+                ng-class-even="'even'" >
+                <td>{{product.id}}</td>
+                <td><a href="#/products/{{product.id}}">{{product.name}}</a></td>
+                <td>{{product.price}} </td>
+            </tr>
+        </table>
+        <div class="btn-group">
+            <button class="btn btn-default" ng-disabled="currentPage === 0" 
+                    ng-click="currentPage = currentPage - 1">
+                Previous
+            </button>
+            <button class="btn btn-default" 
+                    ng-disabled="currentPage >= count / pageSize - 1"
+                    ng-click="currentPage = currentPage + 1"> 
+                Next
+            </button>
+        </div>
+    </div>
+</div>
+

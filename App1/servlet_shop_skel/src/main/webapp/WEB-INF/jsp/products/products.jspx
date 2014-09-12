@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />
+
+    <jsp:directive.include file="subMenu.jspx" />
+    <div>
+        
+    </div>
+    <section id="pageSection">
+        <c:set var="prevPage" value="${CURRENT_PAGE - 1}"/>
+        <c:set var="nextPage" value="${CURRENT_PAGE + 1}"/>
+        <c:if test="${CURRENT_PAGE gt 0}"> <a href="products?page=${prevPage}"> Prev </a> </c:if>
+        ${CURRENT_PAGE} / ${COUNT}
+        <c:if test="${CURRENT_PAGE lt COUNT}"> <a href="products?page=${nextPage}"> Next </a> </c:if>
+        <table class="table table-striped">
+            <th>id</th>
+            <th>name</th>
+            <th>price</th>
+            <th></th>
+            <th></th>
+            <c:forEach var="row" items="${PRODUCT_LIST}">
+            
+                <tr>
+                    <td>${row.id}</td>
+                    <td>${row.name}</td>
+                    <td>${row.price}</td>
+                    <td><a href="products?view=edit&amp;prodId=${row.id}">Edit</a></td>
+                    <td><a href="products?view=delete&amp;prodId=${row.id}">Delete</a></td>
+                </tr>
+            
+            </c:forEach>
+        </table>
+    </section>
+</jsp:root>
+

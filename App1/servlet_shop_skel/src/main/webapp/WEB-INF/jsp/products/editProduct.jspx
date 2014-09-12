@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" /> 
+
+    <section id="pageSection">
+        <form action="products?action=edit" method="post" role="form" id="input">
+            <fieldset>
+                <legend>Product</legend>
+                
+                <div class="row"><label>Name</label><input type="text" name="name" value="${mod_product.name}"/></div>
+                <div class="row"><label>Price</label><input type="text" name="price" value="${mod_product.price}"/></div>
+                <input type="hidden" id="mod_id" name="mod_id" value="${mod_product.id}" />
+                
+                <input type="submit" value="Edit ${mod_product.name}" />
+            </fieldset>
+        </form>        
+    </section>
+</jsp:root>
+
+

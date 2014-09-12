@@ -1,0 +1,33 @@
+<div ng-controller="ProductDetailCtrl">
+    <!--Body content-->
+    <h2>Product Detail</h2>
+     <a href="#products">Back</a>
+    <table class="table">
+        <tr>
+            <td>Id</td>
+            <td>
+                <input ng-model="product.id" type="number" value="{{product.id}}" disabled/>
+            </td>
+        <tr>
+            <td>Name </td>
+            <td>
+                <input ng-model="product.name" type="text" value="{{product.name}}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                <input ng-model="product.price" type="number" value="{{product.price}}"/>
+            </td>
+        </tr>
+    </table>
+
+
+    <div class="btn-group">
+        <input type="button" value="Cancel" class="btn btn-default" ng-controller="NavigationCtrl" ng-click="navigate('products')"/>
+        <input type="button" value="Delete" class="btn btn-default" ng-click="delete()"/>
+        <input type="button" value="Update" class="btn btn-default" ng-click="update(product)"/>
+    </div>
+    <p>Debug: {{product.id}}{{product.name}}{{product.price}}</p>
+</div>
+ 
