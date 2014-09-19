@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:body>
+        
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="metadata">
+            <f:metadata>
+                   <f:viewParam name="id" value="#{editProductBB.id}"  />
+                   <f:viewParam name="name" value="#{editProductBB.name}"  />
+                   <f:viewParam name="price" value="#{editProductBB.price}"  />
+               </f:metadata>
+            </ui:define>
+            <ui:define name="content">
+                <h3>Edit product</h3>
+                <h:form>
+                    <h:panelGrid columns="2" class="table">
+                        <h:outputLabel value="Id"/>
+                        <h:outputText value="#{editProductBB.id}"/> 
+                        <h:outputLabel value="Name" />
+                        <h:inputText value="#{editProductBB.name}" required="true"
+                                     validatorMessage = "Must be 4-20 chars" >
+                        <f:validateLength minimum="4" maximum="20" />
+                        </h:inputText> 
+                        <h:outputLabel value="Price" />
+                        <h:inputText value="#{editProductBB.price}" required="true"
+                                     validatorMessage="Too high, or too low">
+                            <f:validateLongRange minimum="10" maximum="50000" />
+                        </h:inputText>
+                    </h:panelGrid>
+                    <div class="btn-group">
+                        <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
+                                         action="personList?faces-redirect=true" />
+                        <h:commandButton value="Save" action="#{editProductCtrl.update()}" class="btn btn-default"/>
+                    </div>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+        
+    </h:body>
+</html>

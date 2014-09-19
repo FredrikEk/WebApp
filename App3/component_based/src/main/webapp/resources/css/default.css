@@ -1,0 +1,18 @@
+
+root { 
+    display: block;
+}
+
+body {
+    margin: auto;
+    width : 50em;
+}
+
+.odd {
+  background-color: lightgray
+}
+.even {
+  background-color: white
+}
+
+

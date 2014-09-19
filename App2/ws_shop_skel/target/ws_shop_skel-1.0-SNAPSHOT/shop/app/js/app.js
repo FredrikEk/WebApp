@@ -18,11 +18,11 @@ shop.config(['$routeProvider',
                     templateUrl: 'partials/products/products.html',
                     controller: 'ProductListCtrl'
                 }).
-				when('/products/:id', {
+		when('/products/:id', {
                     templateUrl: 'partials/products/product-detail.html',
                     controller: 'ProductDetailCtrl'
                 }).
-				when('/product', {
+		when('/product', {
                     templateUrl: 'partials/products/product-new.html',
                     controller: 'ProductNewCtrl'
                 }).

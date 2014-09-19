@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="metadata">
+                <f:metadata>
+                    <f:viewParam name="id" value="#{deleteProductBB.id}"  />
+                    <f:viewParam name="name" value="#{deleteProductBB.name}"  />
+                    <f:viewParam name="price" value="#{deleteProductBB.price}"  />
+                </f:metadata>
+            </ui:define>
+            
+            
+            <ui:define name="content">
+                <h3>Delete product</h3>
+                <h:form>
+                    <h:panelGrid columns="2" class="table">
+                        <h:outputLabel value="Id"/>
+                        <h:outputText value="#{deleteProductBB.id}" /> 
+                        <h:outputLabel value="Name"/>
+                        <h:outputText value="#{deleteProductBB.name}"/> 
+                        <h:outputLabel value="Price" />
+                        <h:outputText value="#{deleteProductBB.price}"/>
+                    </h:panelGrid>
+                    <div class="btn-group">
+                        <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
+                                         action="productList?faces-redirect=true" />
+                        <h:commandButton value="Delete" action="#{deleteProductCtrl.delete()}" class="btn btn-default"/>
+                        
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

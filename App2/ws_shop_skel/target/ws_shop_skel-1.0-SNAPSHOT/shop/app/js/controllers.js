@@ -87,7 +87,6 @@ productCatalogueControllers.controller('ProductNewCtrl', ['$scope', '$location',
                     .success(function() {
                         $location.path('/products');
                     }).error(function() {
-						console.log("hej");
                 ; // TODO;
             });
         };

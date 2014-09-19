@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <!-- xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"-->
+    <body>
+
+        <ui:composition template="../WEB-INF/template.xhtml">
+            <ui:define name="top">
+                <h2>Person List</h2>
+                <h:link outcome="personNew.xhtml" >New Person</h:link>
+                <hr/>
+            </ui:define>
+
+
+            <ui:define name="content">
+                <h:form>
+                    <h:commandButton value="Prev" actionListener="${personListBB.prev}">
+                        <f:ajax execute="@form" render="personsPanel" />
+                    </h:commandButton>
+                   
+                    <h:commandButton value="Next" actionListener="${personListBB.next}">
+                        <f:ajax execute="@form" render="personsPanel" />
+                    </h:commandButton>
+                    <!-- Must have this to get an id for the ajax render attribute -->
+                    <h:panelGroup id="personsPanel" >
+                        <table class="table">
+                            <thead>
+                                <td>Id</td>
+                                <td>Name</td>
+                                <td>Age</td>
+                            </thead>
+                            <ui:repeat var="person" value="#{personListBB.getList()}">
+                                <tr>
+                                    <td><h:outputText value="#{person.id}" /></td>
+                                    <td><h:outputText value="#{person.fname}" /></td>
+                                    <td><h:outputText value="#{person.age}" /></td>
+                                    <td>
+                                        <h:link value="Edit" outcome="personDetail">
+                                            <f:param name="id" value="#{person.id}" />
+                                            <f:param name="fname" value="#{person.fname}" />
+                                            <f:param name="age" value="#{person.age}" />
+                                        </h:link>
+                                    </td>
+                                </tr>
+                            </ui:repeat>
+                        </table>
+                    </h:panelGroup>
+                </h:form>
+
+
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

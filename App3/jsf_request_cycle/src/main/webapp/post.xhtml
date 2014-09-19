@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>POST's</title>
+    </h:head>
+    <h:body>
+        <h1>POST's</h1>
+        <p> Any POST (using commanButton or commandLink) must be enclosed in a h:form tag. </p>
+
+        <!-- Must have form -->
+        <h:form>
+            <h:panelGrid columns="2" >
+                <h:outputText value="Input data (Enter):"/>
+                <h:inputText value="#{MyBean.data}" valueChangeListener="#{MyListener.valueChange}" >
+                    <!-- Not much used, just to see where they kick in -->
+                    <f:converter converterId="myConverter"/>
+                    <f:validator validatorId="myValidator"/>
+                </h:inputText>
+                <!-- immediate will short circuit the request cycle 
+                     one usage: avoiding validation errors if text field has empty data
+                -->
+                <h:commandButton value="Cancel (immediate)"  immediate="true"  />
+                <h:commandButton value="OK" actionListener="#{MyListener.somethingClicked}" 
+                                 action="#{MyListener.navigate}" />
+            </h:panelGrid>
+            <p>
+                <h:outputText value="Value on Server is: #{MyBean.data}"/>
+            </p>
+        </h:form>
+        <hr/>
+        <!-- Must have form -->
+        <h:form>
+            <h:commandLink  value="OK (commandLink POST)" actionListener="#{MyListener.somethingClicked}" 
+                            action="#{MyListener.navigate}">
+            </h:commandLink>
+        </h:form>
+        <hr/>
+    </h:body>
+</html>
+

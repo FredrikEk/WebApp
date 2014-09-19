@@ -1,0 +1,24 @@
+
+The viewState hidden value in the pages
+---------------------------------------------------------
+
+I wouldn't be able to tell you exactly how the state is created, but in
+the later JSF implementations it is often Base64 encoded and also
+compressed. The view state can be stored either on the server (in which
+case all that's sent to the client is a view ID) or all of it is sent to
+the client. You can control this in your web.xml with the
+javax.faces.STATE_SAVING_METHOD context-param, values either 'server' or
+'client'.
+
+If you choose 'client' and look at the source of your page, you'll likely
+see one hidden element with the state for each form.
+
+If the request contains a javax.faces.ViewState parameter, which it will
+in either case, JSF will know that this is a postback.
+
+The view state, in a nutshell, is everything associated with a page that
+you need to reconstruct its state. Basically the values of UIComponents.
+For example, the current value of an inputText.
+
+I have no idea where you can get nitty-gritty details, other than the JSF
+source.

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+                <h3>Products</h3>
+                <h:link outcome="addProduct.xhtml" >New Person</h:link>
+                <h:form>
+                    <h:commandButton value="Prev" disabled="#{productListBB.first}" actionListener="#{productListBB.prev}">
+                        <f:ajax execute="@form" render="@form" />
+                    </h:commandButton>
+                  
+                    <h:commandButton value="Next" actionListener="#{productListBB.next}">
+                        <f:ajax execute="@form" render="@form" />
+                    </h:commandButton>
+                    <!-- Must have this to get an id for the ajax render attribute -->
+                    <h:panelGroup id="productsPanel" >
+                        <table class="table">
+                            <thead>
+                                <td>Id</td>
+                                <td>Name</td>
+                                <td>Age</td>
+                            </thead>
+                            <ui:repeat var="product" value="#{productListBB.list}">
+                                <tr>
+                                    <td><h:outputText value="#{product.id}" /></td>
+                                    <td><h:outputText value="#{product.name}" /></td>
+                                    <td><h:outputText value="#{product.price}" /></td>
+                                    <td>
+                                        <h:link value="Edit" outcome="editProduct">
+                                            <f:param name="id" value="#{product.id}" />
+                                            <f:param name="name" value="#{product.name}" />
+                                            <f:param name="price" value="#{product.price}" />
+                                        </h:link>
+                                    </td>
+                                    <td>
+                                        <h:link value="Delete" outcome="deleteProduct">
+                                            <f:param name="id" value="#{product.id}" />
+                                            <f:param name="name" value="#{product.name}" />
+                                            <f:param name="price" value="#{product.price}" />
+                                        </h:link>
+                                    </td>
+                                </tr>
+                            </ui:repeat>
+                        </table>
+                    </h:panelGroup>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

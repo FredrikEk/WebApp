@@ -1,0 +1,10 @@
+ 
+*** README Resources ***
+
+It's possible to supply resources by putting them
+into this dir (JavaScript, CSS, pictures, icons, ....)
+and use library attribute (=name of folder in resources)
+(NORMAL way also possible, ..simpler?)
+<h:outputStylesheet library="css" name="default.css"/>
+<h:outputScript library="js" name="utils.js" target="head"/>
+

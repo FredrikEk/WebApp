@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+    <!-- Can't use the new official namespaces, bug in Mojarra f:metadata won't work 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+    -->   
+    <h:head>
+        <title>JSF Request Cycle</title>
+    </h:head>
+    <h:body>
+        <!-- 
+            This is used from get.xhtml. Get's are able to set data
+            in beans using request params (i.e. ?data=1000000)
+        -->
+        <f:metadata>
+            <f:viewParam name="data" value="#{MyBean.data}" />
+        </f:metadata>
+       
+        <h1>JSF Request Cycle</h1>
+        <p>
+            Watch the output window in NetBeans and also the HttpMonitor.<br/>
+        </p>
+        <a href="post.xhtml">POST's </a><br/>
+        <a href="get.xhtml">GET's </a>
+        <p>
+            NOTE: See web.xml how to skip HTML comments 
+            (else they will end up as elements, i.e. have impact on layout )
+        </p>
+        <p>  
+            <b><h:outputLabel value="Data set by request params is: #{MyBean.data}"/></b>
+        </p>
+    </h:body>
+</html>
+

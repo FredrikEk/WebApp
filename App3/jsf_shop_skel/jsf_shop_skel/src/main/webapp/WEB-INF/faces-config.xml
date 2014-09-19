@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config version="2.0"
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+<!-- Main router -->
+ <navigation-rule>
+     <from-view-id>*</from-view-id>
+    <navigation-case>
+        <from-outcome>home</from-outcome>
+        <to-view-id>index.xhtml</to-view-id>
+    </navigation-case>
+    <navigation-case>
+        <from-outcome>products</from-outcome>
+        <to-view-id>partials/products/productList.xhtml</to-view-id>
+    </navigation-case>
+    <navigation-case>
+    <from-outcome>editProduct</from-outcome>
+    <to-view-id>partials/products/editProduct.xhtml</to-view-id>
+    </navigation-case>
+     <navigation-case>
+        <from-outcome>customers</from-outcome>
+        <to-view-id>partials/customers/customers.xhtml</to-view-id>
+    </navigation-case>
+     <navigation-case>
+        <from-outcome>orders</from-outcome>
+        <to-view-id>partials/orders/orders.xhtml</to-view-id>
+    </navigation-case>  
+</navigation-rule>       
+    
+
+
+</faces-config>
