@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="jpa_query_sample" transaction-type="JTA">
+    <jta-data-source>jdbc/sample</jta-data-source>
+    <!-- Seema like we have to explicit include -->
+    <class>jpa_query_sample.Customer</class>
+    <class>jpa_query_sample.DiscountCode</class>
+    <class>jpa_query_sample.Manufacturer</class>
+    <class>jpa_query_sample.MicroMarket</class>
+    <class>jpa_query_sample.Product</class>
+    <class>jpa_query_sample.ProductCode</class>
+    <class>jpa_query_sample.PurchaseOrder</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties/>
+  </persistence-unit>
+</persistence>

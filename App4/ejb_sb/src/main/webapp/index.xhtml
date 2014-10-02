@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Session Beans</title>
+    </h:head>
+    <h:body>
+        <h1>EJB Session Beans</h1>
+        <p>This has meaning when combined with JPA, for now mostly dummy demo </p>
+        <p><b>Watch Server output</b></p>
+        <h:form>
+            <h:panelGrid columns="1">
+                
+                <h:commandButton actionListener="#{bb.callBean('stateless')}" value="Call Stateless" />
+                <h:commandButton actionListener="#{bb.callBean('stateful')}" value="Call Stateful" />
+                <h:commandButton actionListener="#{bb.callBean('singleton')}" value="Call Singleton" />
+                <h:inputText size="40" value="Call Asynch and type here (GUI Responds)" />
+                <h:commandButton actionListener="#{bb.callBean('async')}" value="Call Async" />
+                <h:commandButton actionListener="#{bb.callBean('none')}" value="Refresh" />
+                
+                <h:outputText value="Message is: #{bb.msg}"  />
+            </h:panelGrid>
+        </h:form>
+        <p><b>DOESN*T WORK right now??? Also watch server output for Timer Session Bean (Timer Events)</b></p>
+
+    </h:body>
+</html>
+

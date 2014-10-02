@@ -1,0 +1,49 @@
+
+*** JPQL Queries ***
+
+Run this from inside NetBeans. Select /src/main/resources/persistence.xml
+Right click > Run JPQL Query ...
+Past in queries and click small icon to execute
+
+For execution of queries in Java code see, jpa_managing
+
+Samples ----------------------------------
+
+// NOTE : No ';' 
+
+*** SIMPLE QUERIES (no navigation to related entities) ***
+select m from Manufacturer m
+select m.name, m.email from Manufacturer m
+select m from Manufacturer m where m.state = 'CA'
+select m from Manufacturer m where m.state in('CA', 'OH')
+
+// Sorting
+select m from Manufacturer m where m.state = 'CA' order by m.name desc
+
+// Patten matching
+select m.city, m.addressline1 from Manufacturer m where m.name like 'Su%'
+
+// Aggregate functions
+select sum(p.purchaseCost) from Product p
+
+*** QUERIES WITH NAVIGATION  ***
+// Product and purchase order
+select pu.orderNum, p.productId from Product p join p.purchaseOrderCollection pu order by pu.orderNum
+(Same as: select pu.orderNum, p.productId from Product p, IN (p.purchaseOrderCollection) pu order by pu.orderNum)
+
+// Get product description and manufacturer Product Manufacturer
+select p.description, man.name from Product p JOIN p.manufacturerId man
+
+// All customers ordering more than 100 items
+select cust.name, pu.quantity from PurchaseOrder pu join pu.customerId cust where pu.quantity > 100
+
+// All order with quantity for customer 36
+select cust.name, pu.quantity from Customer cust join cust.purchaseOrderCollection pu where cust.customerId = 36
+
+
+*** Bulk updates and deletes (NOTE: this will alter the sample database) ***
+update Customer c set c.city = 'New' where c.city = 'New York'
+
+// Delete, have to insert data first, see JUnit tests
+delete from DiscountCode dc where dc.discountCode = 'X'
+

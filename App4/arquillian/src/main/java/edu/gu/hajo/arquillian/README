@@ -1,0 +1,4 @@
+**** Basic use of Arquillian ***
+
+It's possible to test managed and EJB beans
+although they need a container.
